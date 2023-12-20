@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\v1\City\CityController;
+use App\Http\Controllers\v1\Patient\PatientController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// todo user/attach-city/{city_id}
-// todo user/detach-city/{city_id}
-
-Route::get('city/{name}', [CityController::class, 'getCityByName']);
+Route::get('patients', [PatientController::class, 'index']);
+Route::post('patients', [PatientController::class, 'store']);

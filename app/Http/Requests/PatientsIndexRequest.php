@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\City;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CityByNameRequest extends FormRequest
+class PatientsIndexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -12,11 +12,6 @@ class CityByNameRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
-    }
-
-    public function getCityName()
-    {
-        return $this->json('cityName');
     }
 
     /**
@@ -27,7 +22,17 @@ class CityByNameRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cityName' => 'string'
+            //
         ];
+    }
+
+    public function getOffset(): int
+    {
+        return $this->offset ?? 0;
+    }
+
+    public function getLimit(): int
+    {
+        return $this->limit ?? 100;
     }
 }
